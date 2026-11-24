@@ -953,7 +953,19 @@ th {
     height: 410px;
   }
   .global-search {
-    display: none;
+    order: 1;
+    width: 100%;
+  }
+  .shell {
+    grid-template-rows: auto 1fr;
+  }
+  .top {
+    flex-wrap: wrap;
+    row-gap: 4px;
+    padding-block: 6px;
+  }
+  .sidebar nav {
+    top: 102px;
   }
 }
 @media (max-width: 520px) {
@@ -994,16 +1006,14 @@ th {
     overflow: auto;
   }
   .sidebar nav {
-    display: flex;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     position: static;
     gap: 2px;
   }
   .sidebar a {
-    flex: 1 0 48px;
-    flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 3px;
-    min-height: 54px;
+    min-height: 44px;
     padding: 6px 2px;
     text-align: center;
   }
@@ -1018,6 +1028,9 @@ th {
   }
   .shell.collapsed .sidebar {
     display: none;
+  }
+  .shell.collapsed {
+    grid-template-rows: auto 1fr;
   }
   .map-viewport,
   .embedded-map .map-viewport {

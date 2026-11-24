@@ -22,6 +22,12 @@ Open the local URL Vite prints. Run `npm run build` for the production bundle. A
 | /reservation | O-02 Duct space and splice reservation |
 | /audit-log | C-08 CRA audit log |
 
+## Deploy the frontend on Vercel
+
+Import `ujjwalk1203/Qatar_Web` with the repository root (`.`) as the root directory and `main` as the production branch. The Vercel configuration builds the Vite client into `dist` and serves its entry point for each workspace URL. The default demo runs without environment variables. After deployment, open `/reservation?view=requests` directly and refresh to check routing.
+
+For connected mode, deploy the SQL service behind the identity gateway described below and configure the frontend API endpoint before building.
+
 ## Demo walkthrough
 
 - **Dashboard:** Inspect a map asset, open a module, or expand a recent reservation. Open My requests from the reservation panel or use the header search with an O-, V-, or Q-prefixed request ID.
