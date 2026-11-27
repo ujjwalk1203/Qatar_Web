@@ -535,18 +535,160 @@ pre {
   padding-inline-end: 51px;
 }
 .arcgis,
+.qnd95-gis-host,
+.qnd95-gis-svg,
 .schematic,
 .schematic svg {
   width: 100%;
   height: 100%;
   display: block;
 }
+.panning .qnd95-gis-host,
 .panning .schematic {
   cursor: grab;
   touch-action: none;
 }
+.panning .qnd95-gis-host:active,
 .panning .schematic:active {
   cursor: grabbing;
+}
+.gis-locate-form {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  color: var(--muted);
+}
+.gis-locate-form svg {
+  position: absolute;
+  inset-inline-start: 10px;
+  pointer-events: none;
+}
+.gis-locate-form input {
+  padding-inline-start: 30px;
+  min-height: 32px;
+  width: min(260px, 48vw);
+  font-size: 13px;
+}
+.gis-locate-form .button {
+  min-height: 32px;
+  padding: 4px 10px;
+}
+.gis-layer-toggles {
+  display: grid;
+  gap: 4px;
+  margin-block: 4px;
+}
+.gis-layer-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.gis-layer-check input {
+  width: auto;
+  min-height: auto;
+  margin: 0;
+}
+.legend-sep {
+  width: 100%;
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 4px 0;
+}
+.gis-road-label {
+  font-size: 9.5px;
+  font-weight: 600;
+  paint-order: stroke;
+  stroke: rgba(255, 255, 255, 0.85);
+  stroke-width: 2.5px;
+}
+.asset-label-dark {
+  stroke: #111827;
+  fill: #f8fafc;
+}
+.qars-callout {
+  top: 10px;
+  inset-inline-end: 62px;
+  width: min(280px, 60%);
+  z-index: 4;
+}
+.asset-detail-drawer {
+  position: absolute;
+  inset-inline-end: 58px;
+  top: 10px;
+  bottom: 10px;
+  width: min(390px, calc(100% - 70px));
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  overflow: auto;
+  box-shadow: 0 8px 24px #1d21252a;
+}
+.detail-drawer-head {
+  align-items: start;
+}
+.detail-kicker {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--brand);
+}
+.detail-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px 10px;
+  padding: 8px 10px;
+  background: #f5f7f9;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 12px;
+}
+.detail-meta-grid span {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+}
+.detail-meta-grid strong {
+  display: block;
+  word-break: break-word;
+}
+.detail-tabs button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 12px;
+}
+.detail-drawer-body {
+  display: grid;
+  gap: 10px;
+}
+.detail-span-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.asset-schematic-svg {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.selection-chip-btn {
+  border: 1px solid var(--line);
+  background: #f5f7f9;
+  color: inherit;
+}
+.selection-chip-btn:hover {
+  border-color: var(--cyan);
+  background: #e3f5f8;
 }
 .palette {
   position: absolute;

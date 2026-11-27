@@ -5,7 +5,7 @@ import { ClipboardList } from 'lucide-react';
 import { modules } from '../components/Sidebar.jsx';
 import { State } from '../components/Shared.jsx';
 import { RequestList } from '../features/operator/RequestMonitor.jsx';
-import { NetworkGraphic } from '../map/NetworkGraphic.jsx';
+import Qnd95GisRenderer from '../map/Qnd95GisRenderer.jsx';
 import { demo, useResource } from '../services/api.js';
 
 const openStatuses = new Set(['Submitted', 'Under review', 'Revision required']);
@@ -52,9 +52,10 @@ export default function Dashboard() {
         <State resource={network} />
         {network.data && (
           <div className="overview-graphic">
-            <NetworkGraphic
+            <Qnd95GisRenderer
               network={network.data}
-              onSelect={(id) => navigate('/map-navigation?asset=' + encodeURIComponent(id))}
+              compact
+              onSelectAsset={(id) => navigate('/map-navigation?asset=' + encodeURIComponent(id))}
             />
           </div>
         )}
@@ -75,7 +76,7 @@ export default function Dashboard() {
             <i className="line-locked" />
             {t('Locked')}
           </span>
-          <span className="map-source">{t(demo ? 'Demo schematic' : 'Network schematic')}</span>
+          <span className="map-source">{t(demo ? 'QND95 · CGIS GIS Map' : 'ArcGIS QND95 Web Map')}</span>
         </div>
       </section>
 

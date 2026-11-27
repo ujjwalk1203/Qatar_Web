@@ -47,6 +47,7 @@ function ReservationWorkspace() {
   const [record, setRecord] = useState(null);
   const [busy, setBusy] = useState('');
   const [error, setError] = useState('');
+  const [inspectRequest, setInspectRequest] = useState(null);
   const selected = network.data?.spans.filter((s) => form.spans.includes(s.id)) || [];
   const routeNodes = new Set(selected.flatMap((s) => [s.a, s.b]));
   function update(next) {
@@ -153,6 +154,9 @@ function ReservationWorkspace() {
           <MapWorkspace
             embedded
             selection={[...form.spans, ...form.manholes]}
+            capacity={(assessment || preview)?.capacity || []}
+            splicePlans={form.splicePlans || {}}
+            inspectRequest={inspectRequest}
             onAsset={chooseAsset}
             onClear={() => {
               if (!busy && !record) update({ spans: [], manholes: [], spliceAt: '' });
@@ -178,9 +182,15 @@ function ReservationWorkspace() {
                   <h2>1 · Selection</h2>
                   <div className="selection-list">
                     {selected.map((s) => (
-                      <span key={s.id} className="selection-chip">
+                      <button
+                        key={s.id}
+                        type="button"
+                        className="selection-chip selection-chip-btn"
+                        title="Open Cross-Section & Asset Schematic detail"
+                        onClick={() => setInspectRequest({ id: s.id, tab: 'cross', nonce: Date.now() })}
+                      >
                         <bdi>{s.id}</bdi> · {s.length} m
-                      </span>
+                      </button>
                     ))}
                     {selected.length > 0 && (
                       <span className="code">{routeNodes.size} manholes on route</span>
@@ -251,6 +261,7 @@ function ReservationWorkspace() {
                   manholes={routeNodes}
                   capacity={(assessment || preview).capacity}
                   limit={network.data.catalog.limit}
+                  onInspectAsset={(id, tab) => setInspectRequest({ id, tab, nonce: Date.now() })}
                 />
                 <section className="task-section">
                   <h2>3 · Request details</h2>
